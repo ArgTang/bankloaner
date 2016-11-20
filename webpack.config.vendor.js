@@ -33,6 +33,11 @@ module.exports = {
             'event-source-polyfill',
             'jquery',
             'zone.js',
+ //           'clarity-icons/clarity-icons.min.css',
+//            '@webcomponents/custom-elements/custom-elements.min.js',
+//            'mutationobserver-shim/dist/mutationobserver.min.js',
+ //           'clarity-icons/clarity-icons.min.js',
+ //           'clarity-ui/clarity-ui.min.css'
         ]
     },
     output: {

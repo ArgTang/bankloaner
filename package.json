@@ -1,6 +1,12 @@
 {
   "name": "Angular2Spa",
   "version": "0.0.0",
+  "scripts": {
+    "start": "dotnet --verbose run",
+    "vendor": "webpack --config webpack.config.vendor.js",
+    "set:dev": "set ASPNETCORE_ENVIRONMENT=Development",
+    "set:prod": "set ASPNETCORE_ENVIRONMENT=Production"
+  },
   "dependencies": {
     "@angular/common": "2.0.2",
     "@angular/compiler": "2.0.2",
@@ -12,6 +18,7 @@
     "@angular/platform-server": "2.0.2",
     "@angular/router": "3.0.2",
     "@types/node": "^6.0.42",
+    "@webcomponents/custom-elements": "github:webcomponents/custom-elements#v1.0.0-alpha.3",
     "angular2-platform-node": "~2.0.11",
     "angular2-template-loader": "^0.6.0",
     "angular2-universal": "~2.0.11",
@@ -19,6 +26,9 @@
     "aspnet-prerendering": "^1.0.7",
     "aspnet-webpack": "^1.0.17",
     "bootstrap": "^3.3.7",
+    "clarity-angular": "^0.7.1",
+    "clarity-icons": "^0.7.1",
+    "clarity-ui": "^0.7.1",
     "css": "^2.2.1",
     "css-loader": "^0.25.0",
     "es6-shim": "^0.35.1",
@@ -29,6 +39,7 @@
     "html-loader": "^0.4.4",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.1",
+    "mutationobserver-shim": "^0.3.2",
     "preboot": "^4.5.2",
     "raw-loader": "^0.5.1",
     "rxjs": "5.0.0-beta.12",

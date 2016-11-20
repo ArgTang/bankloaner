@@ -249,5 +249,6 @@ _Pvt_Extensions
 
 #Cusom
 .vs/
+.vscode/
 .idea/
 *.iml
