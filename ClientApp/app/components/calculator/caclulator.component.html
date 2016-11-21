@@ -1,24 +1,34 @@
-<!--<section class="calculator" [formGroup]="calcForm">
-<form>
+<section class="calculator">
+<form [formGroup]="calcForm">
     <section class="form-block">
-        <label>Lånekalkulator</label>
+
+        <h2>Lånekalkulator</h2>
+
         <div class="form-group">
-            <label for="amount">lånebeløp</label>
-            <input type="number" id="amount" formControlName="amount" placeholder="100000">
+            <label for="amount">Lånebeløp</label>
+            <label for="time" aria-haspopup="true" role="tooltip" [class.invalid]="calcForm.controls.amount.errors && calcForm.controls.amount.touched" class="tooltip tooltip-validation">
+                <input type="number" id="amount" formControlName="amount" placeholder="100000">
+                <span class="tooltip-content">{{requriredmessage}}</span>
+            </label>
         </div>
 
-        <div class="form-group" formGroupName="address">
+        <div class="form-group">
             <label for="time">Nedbetalingstid</label>
-            <input type="text" id="time" formControlName="time">
+            <label for="time" aria-haspopup="true" role="tooltip" [class.invalid]="calcForm.controls.time.errors && calcForm.controls.time.touched" class="tooltip tooltip-validation">
+                <input type="text" id="time" formControlName="time">
+                <span class="tooltip-content">{{requriredmessage}}</span>
+            </label>
+            
             <div class="select">
-                <select formControlName="timeAccount">
-                    <option selected>År</option>
-                    <option>Måneder</option>
+                <select>
+                    <option value="12">År</option>
+                    <option value="1">Måneder</option>
                 </select>
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Søk om lån</button>
+        <p>{{data}}</p>
+        <button type="submit" class="btn btn-primary" [disabled]="calcForm.invalid">Søk om lån</button>
     </section>
 
     <clr-alert [clrAlertType]="'alert-danger'" *ngIf="errorMessage">
@@ -30,4 +40,4 @@
     </clr-alert>
 
 </form>
-</section>-->
+</section>
