@@ -247,8 +247,9 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
-#Cusom
+#Custom
 .vs/
 .vscode/
 .idea/
 *.iml
+ClientApp/app2/

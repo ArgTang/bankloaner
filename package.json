@@ -1,6 +1,6 @@
 {
-  "name": "Angular2Spa",
-  "version": "0.0.0",
+  "name": "bankloaner",
+  "version": "0.1.0",
   "scripts": {
     "start": "dotnet --verbose run",
     "vendor": "webpack --config webpack.config.vendor.js",
@@ -53,5 +53,10 @@
     "webpack-merge": "^0.14.1",
     "webpack-node-externals": "^1.4.3",
     "zone.js": "^0.6.25"
+  },
+  "devDependencies": {
+    "node-sass": "^3.13.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^4.0.2"
   }
 }
