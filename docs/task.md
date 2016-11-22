@@ -2,7 +2,7 @@
 
 
 Man skal kunne registrere seg med personnummer, mobiltelefon og epost for å søke om forbrukslån. 
-Førdenne registreringen evt. samtidig ønskes det en «lånekalkulator» som beregner hvor mye man må betale 
+Fordenne registreringen evt. samtidig ønskes det en «lånekalkulator» som beregner hvor mye man må betale 
 i måneden gitt ønsket lånebeløp og antall år man ønsker å betale ned lånet på. Det settes en fast rente på 7%.
 Utregningen av månedsbeløpet gjøres med følgende formel:
 

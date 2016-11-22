@@ -8,13 +8,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CalculatorComponent {
     
-    errorMessage: string;
     requriredmessage = 'Dette feltet må være fylt ut!';
 
     @Input() data: string;
     @Output() dataEmitter = new EventEmitter<string>();
 
-    interestrate = 7;
+    interestrate: number  = 7;
 
     calcForm: FormGroup;
     constructor(private formBuilder: FormBuilder) {}

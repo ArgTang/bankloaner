@@ -7,8 +7,9 @@ import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/counter/counter.component';
+//import { CounterComponent } from './components/counter/counter.component';
 import { CalculatorComponent } from './components/calculator/caclulator.component';
+import { RegistrerComponent } from './components/registrer/registrer.component';
 
 import { ClarityModule } from 'clarity-angular';
 
@@ -17,10 +18,11 @@ import { ClarityModule } from 'clarity-angular';
     declarations: [
         AppComponent,
         NavMenuComponent,
-        CounterComponent,
+        //CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        CalculatorComponent
+        CalculatorComponent,
+        RegistrerComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -29,9 +31,10 @@ import { ClarityModule } from 'clarity-angular';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
+           // { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'calculator', component: CalculatorComponent },
+            { path: 'registrer', component: RegistrerComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]
