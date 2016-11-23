@@ -2,7 +2,7 @@ import { OnInit, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'registrer',
+    selector: 'registrer-comp',
     templateUrl: './registrer.component.html',
     styleUrls: ['./registrer.component.scss']
 })

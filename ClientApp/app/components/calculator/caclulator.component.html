@@ -28,7 +28,8 @@
         </div>
 
         <p>{{data}}</p>
-        <button type="submit" class="btn btn-primary" [disabled]="calcForm.invalid">Gå videre</button>
+        <button *ngIf="!showRegisterForm" type="submit" class="btn btn-primary" [disabled]="calcForm.invalid">Gå videre</button>
+        <registrer-comp *ngIf="showRegisterForm"></registrer-comp>
     </section>
 
     <clr-alert [clrAlertType]="'alert-danger'" *ngIf="errorMessage">
