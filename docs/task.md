@@ -6,7 +6,7 @@ Fordenne registreringen evt. samtidig ønskes det en «lånekalkulator» som ber
 i måneden gitt ønsket lånebeløp og antall år man ønsker å betale ned lånet på. Det settes en fast rente på 7%.
 Utregningen av månedsbeløpet gjøres med følgende formel:
 
-𝑦 =𝑟.𝐺 / 1−(1+𝑟)^−𝑛
+𝑦 =𝑟*𝐺 / 1−(1+𝑟)^−𝑛
 
 y = kostnadene per år for lånet (som da må deles på 12 for å få månedsbeløpet)
 r = rentefoten i desimal tall (altså 0,07 i dette tilfelle)
