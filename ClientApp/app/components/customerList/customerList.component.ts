@@ -1,23 +1,25 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 
+
+import { apiService } from '../../Services/apiService'
+
+
 @Component({
     selector: 'customerList',
-    templateUrl: './customerList.component.html'
+    templateUrl: './customerList.component.html',
+    providers: [ apiService ]
 })
+
 export class customerListComponent {
-    public forecasts: WeatherForecast[];
+    public customerList;
+    public err;
 
-    constructor(http: Http) {
-        http.get('/api/SampleData/WeatherForecasts').subscribe(result => {
-            this.forecasts = result.json();
-        });
+    constructor(private http: Http, private service: apiService) {
+        this.service.getCustomers()
+                    .subscribe(
+                        customer => this.customerList.push(JSON.stringify(customer)),
+                        err => this.err = err
+                    )
     }
-}
-
-interface WeatherForecast {
-    dateFormatted: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
 }

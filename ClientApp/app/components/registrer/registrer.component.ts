@@ -7,7 +7,8 @@ import { apiService } from '../../Services/apiService'
 @Component({
     selector: 'registrer-comp',
     templateUrl: './registrer.component.html',
-    styleUrls: ['./registrer.component.scss']
+    styleUrls: ['./registrer.component.scss'],
+    providers: [ apiService ]
 })
 export class RegistrerComponent {
     

@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CalculatorComponent } from './components/calculator/caclulator.component';
 import { RegistrerComponent } from './components/registrer/registrer.component';
+import { customerListComponent } from './components/customerList/customerList.component'
 
 import { ClarityModule } from 'clarity-angular';
 
@@ -21,7 +22,8 @@ import { ClarityModule } from 'clarity-angular';
         FetchDataComponent,
         HomeComponent,
         CalculatorComponent,
-        RegistrerComponent
+        RegistrerComponent,
+        customerListComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -34,6 +36,7 @@ import { ClarityModule } from 'clarity-angular';
             { path: 'home', component: HomeComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'calculator', component: CalculatorComponent },
+            { path: 'customerlist', component: customerListComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]
