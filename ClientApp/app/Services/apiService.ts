@@ -5,7 +5,13 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class apiService {
+    private headers = new Headers({'Content-Type': 'application/json'});
+    private baseUrl : string = "/api/Loan"
 
-    private apiUrl = 'app/heroes';  // URL to web API
     constructor (private http: Http) {}
+
+
+    getCustomers() {
+
+    }
 }

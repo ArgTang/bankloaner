@@ -6,6 +6,9 @@ namespace Bankloaner.Data.Models
     public class Loan
     {
         [Required]
+        public int loanId { get; set; }
+
+        [Required]
         [Range(10000, 1000000)]
         public decimal amount { get; set; }
 
