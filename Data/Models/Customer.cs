@@ -19,7 +19,7 @@ namespace Bankloaner.Data.Models
         [Required]
         [Phone]
         public string phone { get; set; }
-
-        public virtual IEnumerable<Loan> Loans {get; set;} = new List<Loan>{};
+        
+        public virtual ICollection<Loan> Loans {get; set;} = new List<Loan>{};
     }
 }

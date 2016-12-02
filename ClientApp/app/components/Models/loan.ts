@@ -1,4 +1,4 @@
 export class Loan {
     amount: number;
-    duration: number;
+    time: number;
 }

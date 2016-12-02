@@ -5,17 +5,15 @@ namespace Bankloaner.Data.Models
 {
     public class Loan
     {
-        [Required]
+        [Key]
         public int loanId { get; set; }
 
         [Required]
-        [Range(10000, 1000000)]
         public decimal amount { get; set; }
 
         [Required]
-        public int timeInMonths { get; set; }
+        public int time { get; set; }
 
-        [Required]
-        public DateTime start { get; set; }
+        public DateTime start { get; set; } = DateTime.Now;
     }
 }

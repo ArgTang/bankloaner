@@ -8,8 +8,8 @@ import { Loan } from '../Models/Loan';
     templateUrl: './caclulator.component.html',
     styleUrls: ['./caclulator.component.scss']    
 })
+
 export class CalculatorComponent {
-    
     public requriredmessage = 'Dette feltet må være fylt ut!';
 
     public data: string;
@@ -17,7 +17,6 @@ export class CalculatorComponent {
     public showRegisterForm: boolean;
 
     loan: Loan;
-
     calcForm: FormGroup;
     constructor(private formBuilder: FormBuilder) {}
 
@@ -39,10 +38,8 @@ export class CalculatorComponent {
 
     calc() {
         const value = this.calcForm.value;  
-
         let above = this.interestrate*value['amount'];
-        let below = 1- Math.pow((1 + this.interestrate), -value['time']);
-        
+        let below = 1- Math.pow((1 + this.interestrate), -value['time'])
         let monthly = Math.round((above/below)/12);
 
         this.data = `Lånet tilbakebatles med ${monthly} i måneden i ${value['time']} år`;
@@ -51,7 +48,7 @@ export class CalculatorComponent {
     setLoan() {
         this.loan = {
             amount: this.calcForm.value.amount,
-            duration: this.calcForm.value.time
+            time: this.calcForm.value.time
         }
     }
 

@@ -23,41 +23,41 @@ namespace Bankloaner.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "Test1", "Test2" };
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public IEnumerable<Customer> Get(int id)
         {
-            return _context.customers
+            var res =  _context.customers
                             .Include(c => c.Loans)
-                            .AsEnumerable();
-        }
+                            .ToList();
 
-        // // POST api/values
-        // [HttpPost]
-        // public void Post([FromBody]string value)
-        // {
-        // }
+            return res;
+        }
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody] Customer customer, [FromBody] Loan loan )
+        public IActionResult Post([FromBody] DbObject dbObject)
         {
-
-            var cCustomer = getCustomer(customer.secNumber);
-
-            if (cCustomer != null)
-            {
-                cCustomer.Loans.Append(loan);
-                _context.Update(cCustomer);
-                _context.SaveChanges();
-            } else {
-                customer.Loans.Append(loan);
-                _context.customers.Add(customer);   
-                _context.SaveChanges();
+            if(!ModelState.IsValid) {
+                return BadRequest();
             }
+
+            var customer = getCustomer(dbObject.Customer.secNumber);
+
+            if(customer == null) {
+                customer = dbObject.Customer;
+                customer.Loans.Append(dbObject.Loan);
+                _context.customers.Add(customer);
+            } else {
+                customer.Loans.Append(dbObject.Loan);
+                _context.Update(customer);
+            }
+            
+            _context.SaveChanges();
+
             return new OkObjectResult("Post ok");
         }
 
@@ -65,21 +65,22 @@ namespace Bankloaner.Controllers
         private Customer getCustomer(string seccnumber) {
             var res = _context.customers.Where(c => c.secNumber == seccnumber)
                                 .Include(c => c.Loans)
+                                .DefaultIfEmpty(null)
                                 .Single();
 
-            return res ?? null;
+            return res;
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        // // PUT api/values/5
+        // [HttpPut("{id}")]
+        // public void Put(int id, [FromBody]string value)
+        // {
+        // }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        // // DELETE api/values/5
+        // [HttpDelete("{id}")]
+        // public void Delete(int id)
+        // {
+        // }
     }
 }

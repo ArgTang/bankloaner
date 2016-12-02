@@ -1,32 +1,29 @@
 <p>{{err}}</p>
-
-<p>{{customerList}}</p>
-
-
-
-
-
-<h1>Weather forecast</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
-
-<!--<p *ngIf="!forecasts"><em>Loading...</em></p>
-
-<table class='table' *ngIf="forecasts">
+<h1>Customer List</h1>
+<table class="table">
     <thead>
         <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Name</th>
+            <th>secNumber</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>Loan</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let forecast of forecasts">
-            <td>{{ forecast.dateFormatted }}</td>
-            <td>{{ forecast.temperatureC }}</td>
-            <td>{{ forecast.temperatureF }}</td>
-            <td>{{ forecast.summary }}</td>
+        <tr *ngFor="let customer of customerList">
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.secNumber }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.phone }}</td>
+            <td *ngFor="let loan of customer.loans">
+                LoanAmount: {{Loan.amount}} Loantime: {{Loan.time}}
+            </td>
         </tr>
     </tbody>
-</table>-->
+</table>
+
+<section class="spinner-wrap" *ngIf="!customerList && !err">
+    <div class="spinner"></div>
+    <p>Laster Data...</p>
+</section>

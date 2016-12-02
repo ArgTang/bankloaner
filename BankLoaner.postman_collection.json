@@ -1,0 +1,71 @@
+{
+	"variables": [],
+	"info": {
+		"name": "BankLoaner",
+		"_postman_id": "4b3ca6e2-40c0-39e2-1c4f-522500c05935",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:15136/api/Loan",
+			"request": {
+				"url": "http://localhost:15136/api/Loan",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer\": {\n\t\t\"secNumber\": \"1234\",\n\t\t\"name\": \"Ole\",\n\t\t\"email\": \"ole@ole.com\",\n\t\t\"phone\": \"1234\"\n\t},\n\t\"Loan\": {\n\t\t\"amount\": \"120000.00\",\n\t\t\"timeInMonths\": \"24\"\n\t}\n}"
+				},
+				"description": "Insert"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:15136/api/Loan",
+			"request": {
+				"url": "http://localhost:15136/api/Loan",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer\": {\n\t\t\"secNumber\": \"1234\",\n\t\t\"name\": \"Ole\",\n\t\t\"email\": \"ole@ole.com\",\n\t\t\"phone\": \"1234\"\n\t},\n\t\"Loan\": {\n\t\t\"amount\": \"120000.00\",\n\t\t\"timeInMonths\": \"24\"\n\t}\n}"
+				},
+				"description": "test\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:15136/api/Loan",
+			"request": {
+				"url": "http://localhost:15136/api/Loan/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer\": {\n\t\t\"secNumber\": \"1234\",\n\t\t\"name\": \"Ole\",\n\t\t\"email\": \"ole@ole.com\",\n\t\t\"phone\": \"1234\"\n\t},\n\t\"Loan\": {\n\t\t\"amount\": \"120000.00\",\n\t\t\"timeInMonths\": \"24\"\n\t}\n}"
+				},
+				"description": "Get\n"
+			},
+			"response": []
+		}
+	]
+}
