@@ -2,7 +2,7 @@ import { OnInit, Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Person } from '../Models/Person';
-import { apiService } from '../../Services/apiService'
+import { apiService } from '../../Services/apiService';
 
 @Component({
     selector: 'registrer-comp',
@@ -10,9 +10,16 @@ import { apiService } from '../../Services/apiService'
     styleUrls: ['./registrer.component.scss'],
     providers: [ apiService ]
 })
+
 export class RegistrerComponent {
+
+    modalTitle: string = "Modal";
+    modalMessage: string = "Melding";
+    modalOpen: boolean;
+    http: boolean;
     
     requiredmessage = 'Dette feltet må være fylt ut!';
+    public modal: boolean;
 
     private Person: Person;
     @Input() loan;
@@ -29,15 +36,30 @@ export class RegistrerComponent {
         });
     }
 
-    register(){
+    register() {
+        this.http = true;
         let vals = this.regForm.value;
         this.Person = {
             name: vals.name,
-            secnumber: vals.secnumber,
+            secNumber: vals.secnumber,
             email: vals.email,
-            phone: vals.phone
+            phone: vals.phone,
         }
-        
-        alert(JSON.stringify(this.Person) + JSON.stringify(this.loan));
+
+        this.service.addCustomer(this.Person, this.loan)
+            .subscribe(
+                result => {
+                    this.modalTitle = "Succsess";
+                    this.modalMessage = JSON.stringify(result);
+                    this.modalOpen = true;
+                    this.http = false;
+                },
+                err => {
+                    this.modalTitle = "Dette gikk galt";
+                    this.modalMessage = err;
+                    this.modalOpen = true;
+                    this.http = false;
+                }
+            )
     }
 }

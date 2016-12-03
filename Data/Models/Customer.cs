@@ -13,11 +13,11 @@ namespace Bankloaner.Data.Models
         public string name { get; set; }
 
         [Required]
-        [EmailAddress]
+        //[EmailAddress]
         public string email { get; set; }
 
         [Required]
-        [Phone]
+        //[Phone]
         public string phone { get; set; }
         
         public virtual ICollection<Loan> Loans {get; set;} = new List<Loan>{};

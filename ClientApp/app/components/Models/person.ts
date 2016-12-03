@@ -1,6 +1,7 @@
 export class Person {
     name: string
-    secnumber: number;
+    secNumber: string;
     email: string;
-    phone: number;
+    phone: string;
+    //Loans: any;
 }
