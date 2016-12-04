@@ -13,26 +13,47 @@ import { apiService } from '../../Services/apiService';
 
 export class RegistrerComponent {
 
-    modalTitle: string = "Modal";
-    modalMessage: string = "Melding";
-    modalOpen: boolean;
+    public validation = {
+        required: 'Dette feltet må være fylt ut!',
+        minlength: 'Dette feltet må minst ha to tegn',
+        number: 'Dette feltet kan kun ha tall',
+        email: 'Sjekk at emailadressen er skrevet riktig',
+        letter: 'Dette feltet kan kun ha bokstaver',
+        minletter: function (number) { return `Dette feltet må ha ${number} tegn` }
+    };
+
+    public modal = {
+        title: 'Modal',
+        message: 'Melding',
+        open: false
+    }
     http: boolean;
-    
-    requiredmessage = 'Dette feltet må være fylt ut!';
-    public modal: boolean;
 
     private Person: Person;
     @Input() loan;
 
     regForm: FormGroup;
-    constructor(private formBuilder: FormBuilder, private service: apiService) {}
+    constructor(private formBuilder: FormBuilder, private service: apiService) { }
+
+    Vrequired(input) {
+        return this.regForm.get(input).hasError('required');
+    }
 
     ngOnInit() {
         this.regForm = this.formBuilder.group({
-            name: ['', Validators.required],
-            secnumber: ['', Validators.required],
-            email: ['', Validators.required],
-            phone:['', Validators.required],
+            name: ['', [Validators.required,
+                Validators.pattern("^[a-zA-Zæøå ÆØÅ]+$"),
+                Validators.minLength(2)
+            ]],
+            secnumber: ['', [Validators.required,
+                Validators.pattern("^[0-9]{11}")
+            ]],
+            email: ['', [Validators.required,
+                Validators.pattern("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")
+            ]],
+            phone: ['', [Validators.required,
+                Validators.pattern("^[0-9]{8}")
+            ]],
         });
     }
 
@@ -49,15 +70,15 @@ export class RegistrerComponent {
         this.service.addCustomer(this.Person, this.loan)
             .subscribe(
                 result => {
-                    this.modalTitle = "Succsess";
-                    this.modalMessage = JSON.stringify(result);
-                    this.modalOpen = true;
+                    this.modal.title = "Succsess";
+                    this.modal.message = JSON.stringify(result);
+                    this.modal.open = true;
                     this.http = false;
                 },
                 err => {
-                    this.modalTitle = "Dette gikk galt";
-                    this.modalMessage = err;
-                    this.modalOpen = true;
+                    this.modal.title = "Dette gikk galt";
+                    this.modal.message = err;
+                    this.modal.open = true;
                     this.http = false;
                 }
             )

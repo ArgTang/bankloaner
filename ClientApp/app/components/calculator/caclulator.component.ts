@@ -10,6 +10,12 @@ import { Loan } from '../Models/Loan';
 })
 
 export class CalculatorComponent {
+    public validation = {
+        required: 'Dette feltet må være fylt ut!',
+        minlength: 'Dette feltet må være større enn 10 000',
+        number: 'Dette feltet kan kun ha tall'
+    };
+
     public requriredmessage = 'Dette feltet må være fylt ut!';
 
     public data: string;
@@ -22,11 +28,18 @@ export class CalculatorComponent {
 
     ngOnInit() {
         this.calcForm = this.formBuilder.group({
-            amount: ['', Validators.required],
-            time: ['', Validators.required],
+            amount: ['', [Validators.required,
+                         Validators.pattern("[0-9]{2,}")
+                ]
+            ],
+            time: ['', [Validators.required,
+                        Validators.pattern("^[0-9]+$")
+                    ]
+            ],
         });
 
         this.calcForm.valueChanges.subscribe(value => {
+            console.table(this.calcForm.controls);
             if(this.calcForm.status === "INVALID") {
                 return;
             } 

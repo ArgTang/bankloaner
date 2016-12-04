@@ -7,8 +7,9 @@
         <div class="form-group">
             <label for="amount">Lånebeløp</label>
             <label for="time" aria-haspopup="true" role="tooltip" [class.invalid]="calcForm.controls.amount.errors && calcForm.controls.amount.touched" class="tooltip tooltip-validation">
-                <input type="number" id="amount" formControlName="amount" placeholder="100000">
-                <span class="tooltip-content">{{requriredmessage}}</span>
+                <input type="number" id="amount" formControlName="amount">
+                <span *ngIf="!calcForm.get('amount').hasError('required') && calcForm.get('amount').hasError('pattern')" class="tooltip-content">{{validation.minlength}}</span>
+                <span *ngIf="calcForm.get('amount').hasError('required')" class="tooltip-content">{{validation.required}}</span>
             </label>
         </div>
 
@@ -16,29 +17,21 @@
             <label for="time">Nedbetalingstid</label>
             <label for="time" aria-haspopup="true" role="tooltip" [class.invalid]="calcForm.controls.time.errors && calcForm.controls.time.touched" class="tooltip tooltip-validation">
                 <input type="text" id="time" formControlName="time">
-                <span class="tooltip-content">{{requriredmessage}}</span>
+                <span *ngIf="!calcForm.get('time').hasError('required') && calcForm.get('time').hasError('pattern')" class="tooltip-content">{{validation.number}}</span>
+                <span *ngIf="calcForm.get('time').hasError('required')" class="tooltip-content">{{validation.required}}</span>
             </label>
             
-            <div class="select">
+            <!--<div class="select">
                 <select>
                     <option value="12">År</option>
                     <option value="1">Måneder</option>
                 </select>
-            </div>
+            </div>-->
         </div>
 
         <p>{{data}}</p>
         <button *ngIf="!showRegisterForm" (click)="showForm()" type="submit" class="btn btn-primary" [disabled]="calcForm.invalid">Gå videre</button>
-        <registrer-comp [loan] ="loan" *ngIf="showRegisterForm"></registrer-comp>
+        <registrer-comp [loan]="loan" *ngIf="!showRegisterForm"></registrer-comp>
     </section>
-
-    <clr-alert [clrAlertType]="'alert-danger'" *ngIf="errorMessage">
-        <span class="alert-item">
-        <span class="alert-text">
-            {{errorMessage}}
-        </span>
-        </span>
-    </clr-alert>
-
 </form>
 </section>
