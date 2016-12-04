@@ -50,12 +50,12 @@ namespace Bankloaner.Controllers
             if ( customer != null ) {
                 ModelState.AddModelError("", "Kunde finnes allerede, Vennligst a kontakt med en kundebehandler");
                 return BadRequest(ModelState);
-            } 
-
-            customer.Loans.Append(dbObject.Loan);
+            }
+            customer = dbObject.Customer;
+            customer.Loans.Add(dbObject.Loan);
             _context.Add(customer);
             _context.SaveChanges();
-            return new OkObjectResult("Post ok");
+            return Ok("Søknad sent til behandling");
         }
 
 

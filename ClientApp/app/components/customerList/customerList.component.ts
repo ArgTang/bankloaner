@@ -18,7 +18,7 @@ export class customerListComponent {
         this.service.getCustomers()
                     .subscribe(
                         customer => this.customerList = customer,
-                        err => this.err = JSON.stringify(err)
+                        err => this.err = err
                     )
     }
 }

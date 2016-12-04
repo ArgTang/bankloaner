@@ -3,14 +3,13 @@
     <section class="form-block">
 
         <h2>Registreringsinfo</h2>
-
         <div class="form-group">
             <label for="name">Navn</label>
             <label for="name" aria-haspopup="true" role="tooltip" [class.invalid]="regForm.controls.name.errors && regForm.controls.name.touched" class="tooltip tooltip-validation">
                 <input type="text" id="name" formControlName="name">
-                <span *ngIf="!Vrequired('name') && regForm.get('name').hasError('pattern')" class="tooltip-content">{{validation.letter}}</span>
-                <span *ngIf="!Vrequired('name') && regForm.get('name').hasError('minlength')" class="tooltip-content">{{validation.minlength}}</span>
-                <span *ngIf="Vrequired('name')" class="tooltip-content">{{validation.required}}</span>
+                <span *ngIf="!required('name') && regForm.get('name').hasError('pattern')" class="tooltip-content">{{validation.letter}}</span>
+                <span *ngIf="!required('name') && regForm.get('name').hasError('minlength')" class="tooltip-content">{{validation.minlength}}</span>
+                <span *ngIf="required('name')" class="tooltip-content">{{validation.required}}</span>
             </label>
         </div>
 
@@ -18,8 +17,8 @@
             <label for="secnumber">Personnummer</label>
             <label for="secnumber" aria-haspopup="true" role="tooltip" [class.invalid]="regForm.controls.secnumber.errors && regForm.controls.secnumber.touched" class="tooltip tooltip-validation">
                 <input type="text" id="secnumber" formControlName="secnumber">
-                <span *ngIf="!Vrequired('secnumber') && regForm.get('secnumber').hasError('pattern')" class="tooltip-content">{{validation.minletter(11)}}</span>
-                <span *ngIf="Vrequired('secnumber')" class="tooltip-content">{{validation.required}}</span>
+                <span *ngIf="!required('secnumber') && regForm.get('secnumber').hasError('pattern')" class="tooltip-content">{{validation.minletter(11)}}</span>
+                <span *ngIf="required('secnumber')" class="tooltip-content">{{validation.required}}</span>
             </label>
         </div>
         
@@ -27,8 +26,8 @@
             <label for="email">Email</label>
             <label for="email" aria-haspopup="true" role="tooltip" [class.invalid]="regForm.controls.email.errors && regForm.controls.email.touched" class="tooltip tooltip-validation">
                 <input type="email" id="email" formControlName="email">
-                <span *ngIf="!Vrequired('email') && regForm.get('email').hasError('pattern')" class="tooltip-content">{{validation.email}}</span>
-                <span *ngIf="Vrequired('email')" class="tooltip-content">{{validation.required}}</span>
+                <span *ngIf="!required('email') && regForm.get('email').hasError('pattern')" class="tooltip-content">{{validation.email}}</span>
+                <span *ngIf="required('email')" class="tooltip-content">{{validation.required}}</span>
             </label>
         </div>
 
@@ -36,8 +35,8 @@
             <label for="phone">Telefonnummer</label>
             <label for="phone" aria-haspopup="true" role="tooltip" [class.invalid]="regForm.controls.phone.errors && regForm.controls.phone.touched" class="tooltip tooltip-validation">
                 <input type="text" id="phone" formControlName="phone">
-                <span *ngIf="!Vrequired('phone') && regForm.get('phone').hasError('pattern')" class="tooltip-content">{{validation.minletter(8)}}</span>
-                <span *ngIf="Vrequired('phone')" class="tooltip-content">{{validation.required}}</span>
+                <span *ngIf="!required('phone') && regForm.get('phone').hasError('pattern')" class="tooltip-content">{{validation.minletter(8)}}</span>
+                <span *ngIf="required('phone')" class="tooltip-content">{{validation.required}}</span>
             </label>
         </div>
 

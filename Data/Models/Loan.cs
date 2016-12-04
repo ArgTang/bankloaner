@@ -9,9 +9,11 @@ namespace Bankloaner.Data.Models
         public int loanId { get; set; }
 
         [Required]
-        public decimal amount { get; set; }
+        [RegularExpression(@"^[0-9]+$")]
+        public int amount { get; set; }
 
         [Required]
+        [RegularExpression(@"^[0-9]+$")]
         public int time { get; set; }
 
         public DateTime start { get; set; } = DateTime.Now;

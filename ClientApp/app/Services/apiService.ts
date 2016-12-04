@@ -26,46 +26,37 @@ export class apiService {
         let body = {customer, loan}
 
         let res = this.http.post(this.baseUrl, body, options)
-                        .map(this.extractData)
+                        .map(this.postresult)
                         .catch(this.handleError);
         return res;
      }
 
+    private postresult(res: Response) {
+        //this is a hack: res.json() crashes horribly
+        return JSON.parse(JSON.stringify(res))._body
+
+    }
 
     private extractData(res: Response) {
-        return res.json() || { };
+        const rest = res.json();
+        return rest || { };
     }
 
     private handleError(error: Response | any) {
-        console.table(error);
         let errMsg: string;
 
         if (error instanceof Response) {
             const body = error.json() || '';
-            let err = '';
             if (body[""]) {
-                err = body[""][0];
+                errMsg = body[""][0];
             } else {
-                err = body.error || JSON.stringify(body);
+                errMsg = body.error || JSON.stringify(body);
             }
-            errMsg = err;
-            //errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
         } else {
             errMsg = error.message ? error.message : error.toString();
         }
 
         console.error(errMsg);
         return Observable.throw(errMsg);
-    }
-
-    addComment(body: Object) {
-        let baseUrl: string = "/api/Loan";
-        let bodyString = JSON.stringify(body); // Stringify payload
-        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-        let options = new RequestOptions({ headers: headers }); // Create a request option
-
-        return this.http.post(baseUrl, body, options)
-            .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 }

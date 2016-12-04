@@ -16,7 +16,6 @@ export class RegistrerComponent {
     public validation = {
         required: 'Dette feltet må være fylt ut!',
         minlength: 'Dette feltet må minst ha to tegn',
-        number: 'Dette feltet kan kun ha tall',
         email: 'Sjekk at emailadressen er skrevet riktig',
         letter: 'Dette feltet kan kun ha bokstaver',
         minletter: function (number) { return `Dette feltet må ha ${number} tegn` }
@@ -35,7 +34,7 @@ export class RegistrerComponent {
     regForm: FormGroup;
     constructor(private formBuilder: FormBuilder, private service: apiService) { }
 
-    Vrequired(input) {
+    required(input) {
         return this.regForm.get(input).hasError('required');
     }
 
@@ -70,8 +69,8 @@ export class RegistrerComponent {
         this.service.addCustomer(this.Person, this.loan)
             .subscribe(
                 result => {
-                    this.modal.title = "Succsess";
-                    this.modal.message = JSON.stringify(result);
+                    this.modal.title = "Lønesøknad registrert";
+                    this.modal.message = result;
                     this.modal.open = true;
                     this.http = false;
                 },

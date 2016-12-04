@@ -18,7 +18,10 @@ export class CalculatorComponent {
 
     public requriredmessage = 'Dette feltet må være fylt ut!';
 
-    public data: string;
+    public data = {
+        monthly: 0,
+        time: 0
+    };
     private interestrate: number = 7/100;
     public showRegisterForm: boolean;
 
@@ -39,7 +42,6 @@ export class CalculatorComponent {
         });
 
         this.calcForm.valueChanges.subscribe(value => {
-            console.table(this.calcForm.controls);
             if(this.calcForm.status === "INVALID") {
                 return;
             } 
@@ -55,7 +57,9 @@ export class CalculatorComponent {
         let below = 1- Math.pow((1 + this.interestrate), -value['time'])
         let monthly = Math.round((above/below)/12);
 
-        this.data = `Lånet tilbakebatles med ${monthly} i måneden i ${value['time']} år`;
+        this.data.monthly = monthly;
+        this.data.time = value['time'];
+        //this.data = `Lånet skal tilbakebetales med ${monthly} i måneden i ${value['time']} år`;
     }
 
     setLoan() {
@@ -67,5 +71,9 @@ export class CalculatorComponent {
 
     showForm(){
         this.showRegisterForm = !this.showRegisterForm;
+    }
+
+    required(input) {
+        return this.calcForm.get(input).hasError('required');
     }
 }

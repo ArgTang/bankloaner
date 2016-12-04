@@ -2,14 +2,14 @@
 <form [formGroup]="calcForm">
     <section class="form-block">
 
-        <h2>Lånekalkulator</h2>
+        <h2>Superlån7&trade;</h2>
 
         <div class="form-group">
             <label for="amount">Lånebeløp</label>
-            <label for="time" aria-haspopup="true" role="tooltip" [class.invalid]="calcForm.controls.amount.errors && calcForm.controls.amount.touched" class="tooltip tooltip-validation">
+            <label for="amount" aria-haspopup="true" role="tooltip" [class.invalid]="calcForm.controls.amount.errors && calcForm.controls.amount.touched" class="tooltip tooltip-validation">
                 <input type="number" id="amount" formControlName="amount">
-                <span *ngIf="!calcForm.get('amount').hasError('required') && calcForm.get('amount').hasError('pattern')" class="tooltip-content">{{validation.minlength}}</span>
-                <span *ngIf="calcForm.get('amount').hasError('required')" class="tooltip-content">{{validation.required}}</span>
+                <span *ngIf="!required('amount') && calcForm.get('amount').hasError('pattern')" class="tooltip-content">{{validation.minlength}}</span>
+                <span *ngIf="required('amount')" class="tooltip-content">{{validation.required}}</span>
             </label>
         </div>
 
@@ -17,8 +17,8 @@
             <label for="time">Nedbetalingstid</label>
             <label for="time" aria-haspopup="true" role="tooltip" [class.invalid]="calcForm.controls.time.errors && calcForm.controls.time.touched" class="tooltip tooltip-validation">
                 <input type="text" id="time" formControlName="time">
-                <span *ngIf="!calcForm.get('time').hasError('required') && calcForm.get('time').hasError('pattern')" class="tooltip-content">{{validation.number}}</span>
-                <span *ngIf="calcForm.get('time').hasError('required')" class="tooltip-content">{{validation.required}}</span>
+                <span *ngIf="!required('time') && calcForm.get('time').hasError('pattern')" class="tooltip-content">{{validation.number}}</span>
+                <span *ngIf="required('time')" class="tooltip-content">{{validation.required}}</span>
             </label>
             
             <!--<div class="select">
@@ -29,9 +29,9 @@
             </div>-->
         </div>
 
-        <p>{{data}}</p>
+        <h5 *ngIf="data.monthly>1">Lånet skal tilbakebetales med <strong>{{data.monthly}}</strong> i måneden i <strong>{{data.time}}</strong> år</h5>
         <button *ngIf="!showRegisterForm" (click)="showForm()" type="submit" class="btn btn-primary" [disabled]="calcForm.invalid">Gå videre</button>
-        <registrer-comp [loan]="loan" *ngIf="!showRegisterForm"></registrer-comp>
+        <registrer-comp [loan]="loan" *ngIf="showRegisterForm"></registrer-comp>
     </section>
 </form>
 </section>

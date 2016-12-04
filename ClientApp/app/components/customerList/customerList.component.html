@@ -1,13 +1,24 @@
 <p>{{err}}</p>
+<section *ngIf="err">
+    <clr-alert [clrAlertType]="alert-danger">
+        <div class="alert-item">
+            <span class="alert-text">
+                {{err}}
+            </span>
+        </div>
+    </clr-alert>
+</section>
+
 <h1>Customer List</h1>
 <table class="table">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>secNumber</th>
-            <th>email</th>
-            <th>phone</th>
-            <th>Loan</th>
+            <th>Navn</th>
+            <th>Personnummer</th>
+            <th>Email</th>
+            <th>Telefonnummer</th>
+            <th>Lånebeløp</th>
+            <th>Tilbakebetalingstid</th>
         </tr>
     </thead>
     <tbody>
@@ -16,9 +27,8 @@
             <td>{{ customer.secNumber }}</td>
             <td>{{ customer.email }}</td>
             <td>{{ customer.phone }}</td>
-            <td *ngFor="let loan of customer.loans">
-                LoanAmount: {{Loan.amount}} Loantime: {{Loan.time}}
-            </td>
+            <td>{{ customer.loans[0]?.amount }}</td>
+            <td>{{ customer.loans[0]?.time }}</td>
         </tr>
     </tbody>
 </table>
