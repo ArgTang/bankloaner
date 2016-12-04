@@ -6,7 +6,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CalculatorComponent } from './components/calculator/caclulator.component';
 import { RegistrerComponent } from './components/registrer/registrer.component';
 import { customerListComponent } from './components/customerList/customerList.component'
@@ -18,7 +17,6 @@ import { ClarityModule } from 'clarity-angular';
     declarations: [
         AppComponent,
         NavMenuComponent,
-        FetchDataComponent,
         CalculatorComponent,
         RegistrerComponent,
         customerListComponent
@@ -32,8 +30,8 @@ import { ClarityModule } from 'clarity-angular';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: CalculatorComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
-            { path: 'customerlist', component: customerListComponent },
+            { path: 'hjem', component: CalculatorComponent },
+            { path: 'kundeliste', component: customerListComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]
