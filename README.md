@@ -41,3 +41,4 @@ You've created a new ASP.NET Core project. [Learn what's new](https://go.microso
 
 We would love to hear your [feedback](https://go.microsoft.com/fwlink/?LinkId=518015)
 
+testing tfs build integration
